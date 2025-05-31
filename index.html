@@ -26,12 +26,12 @@
             border-color: #00C6FF;
         }
         /* Animação sutil para o botão */
-        .btn-animate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 198, 255, 0.4);
-        }
         .btn-animate {
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .btn-animate:hover {
+            transform: scale(1.05); /* Aumenta ligeiramente o botão */
+            box-shadow: 0 12px 24px rgba(0, 198, 255, 0.5); /* Sombra mais intensa */
         }
         .video-container {
             position: relative;
@@ -55,11 +55,29 @@
             border-radius: 0.75rem;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            border-left: 4px solid #00C6FF;
+            border: 1px solid #333;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex; /* Adicionado para centralizar o texto verticalmente */
+            flex-direction: column; /* Organiza o conteúdo em coluna */
+            justify-content: center; /* Centraliza verticalmente */
+            align-items: center; /* Centraliza horizontalmente */
+        }
+        .depoimento-box:hover {
+            transform: translateY(-5px); /* Move o bloco para cima */
+            box-shadow: 0 8px 16px rgba(0, 198, 255, 0.3); /* Sombra suave */
+        }
+        /* As classes depoimento-image-container e depoimento-image foram removidas pois as imagens não serão mais usadas */
+        .depoimento-text {
+            text-align: center;
+            font-size: 1rem;
+            color: #D4D4D4;
         }
         .depoimento-autor {
             font-style: italic;
             color: #A0AEC0;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -67,13 +85,13 @@
 
     <div class="max-w-4xl w-full bg-gray-900 bg-opacity-80 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-lg border border-blue-800 futuristic-glow">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-white mb-6 leading-tight">
-            Método Live secreta
+            Suas Lives Estão Vazias?
         </h1>
         <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-center futuristic-gradient bg-clip-text text-transparent mb-8">
-            Descubra o como faturar 17 mil em ate 3 horas!
+            Descubra o Método Que Transformou Vendas de Lojas Como a Sua!
         </h2>
 
-        <div class="mb-16"> 
+        <div class="mb-16">
             <h3 class="text-2xl sm:text-3xl font-bold text-white text-center mb-6 futuristic-gradient bg-clip-text text-transparent">
                 Assista e Descubra o Poder do Método Live Secreta!
             </h3>
@@ -85,90 +103,91 @@
             </p>
         </div>
 
-        <p class="text-lg sm:text-xl text-center text-blue-300 font-bold mb-6"> 
+        <p class="text-lg sm:text-xl text-center text-blue-300 font-bold mb-6">
             <span class="text-white text-2xl sm:text-3xl lg:text-4xl futuristic-glow inline-block px-2 py-1 rounded-md">Evento Online Gratuito</span>
             <br class="hidden sm:inline">
             <span class="ml-0 sm:ml-4 futuristic-gradient bg-clip-text text-transparent">| AO VIVO VIA GOOGLE MEET |</span>
             <br class="hidden sm:inline">
             <span class="ml-0 sm:ml-4">Vagas Limitadas para o Grupo VIP</span>
         </p>
-        <p class="text-base sm:text-lg text-center text-gray-400 mb-12"> 
-            Um Aulão prático onde você vai aprender a estratégia exata para vender sem depender de loja cheia.
+        <p class="text-base sm:text-lg text-center text-gray-400 mb-12">
+            Um workshop prático onde você vai aprender a estratégia exata para vender sem depender de loja cheia.
         </p>
 
-        <div class="bg-gray-800 p-8 sm:p-10 rounded-xl border border-blue-700 futuristic-glow mb-16"> 
-            <h3 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8"> 
+        <div class="bg-gray-800 p-8 sm:p-10 rounded-xl border border-blue-700 futuristic-glow mb-16">
+            <h3 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8">
                 GARANTA SUA VAGA AGORA MESMO!
             </h3>
-            <form id="captureForm" class="space-y-8"> 
+            <form id="captureForm" class="space-y-8">
                 <div>
                     <label for="name" class="block text-lg font-medium text-blue-300 mb-2">Nome Completo:</label>
                     <input type="text" id="name" name="name" required
-                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300" 
+                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300"
                            placeholder="Seu nome completo">
                 </div>
                 <div>
                     <label for="email" class="block text-lg font-medium text-blue-300 mb-2">E-mail:</label>
                     <input type="email" id="email" name="email" required
-                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300" 
+                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300"
                            placeholder="seuemail@exemplo.com">
                 </div>
                 <div>
                     <label for="phone" class="block text-lg font-medium text-blue-300 mb-2">WhatsApp:</label>
                     <input type="tel" id="phone" name="phone" required
-                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300" 
+                           class="w-full p-4 rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 input-glow transition-all duration-300"
+                           placeholder="(XX) XXXXX-XXXX">
                 </div>
 
                 <button type="submit"
-                        class="w-full py-5 px-6 rounded-xl futuristic-gradient text-white text-xl sm:text-2xl font-bold uppercase tracking-wider btn-animate futuristic-glow"> 
-                    QUERO MINHA VAGA
+                        class="w-full py-5 px-6 rounded-xl futuristic-gradient text-white text-xl sm:text-2xl font-bold uppercase tracking-wider btn-animate futuristic-glow">
+                    QUERO MINHA VAGA NO GRUPO VIP
                 </button>
             </form>
-            <p id="messageBox" class="mt-6 text-center text-green-400 hidden"> 
+            <p id="messageBox" class="mt-6 text-center text-green-400 hidden">
                 Cadastro realizado com sucesso! Você será redirecionada para o grupo do WhatsApp.
             </p>
         </div>
 
-        <hr class="border-t-2 border-blue-700 w-2/3 mx-auto mb-16 futuristic-glow"> 
+        <hr class="border-t-2 border-blue-700 w-2/3 mx-auto mb-16 futuristic-glow">
 
-        <div class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8"> 
+        <div class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="depoimento-box">
-                <p class="text-lg">"O método revolucionou minhas lives! As vendas dispararam!"</p>
-                <p class="depoimento-autor mt-2">- Cliente 1</p>
+                <p class="depoimento-text">"O método revolucionou minhas lives! As vendas dispararam!"</p>
+                <p class="depoimento-autor">- Cliente 1</p>
             </div>
             <div class="depoimento-box">
-                <p class="text-lg">"Finalmente encontrei uma forma eficaz de engajar minha audiência e vender!"</p>
-                <p class="depoimento-autor mt-2">- Cliente 2</p>
+                <p class="depoimento-text">"Finalmente encontrei uma forma eficaz de engajar minha audiência e vender!"</p>
+                <p class="depoimento-autor">- Cliente 2</p>
             </div>
             <div class="depoimento-box">
-                <p class="text-lg">"Estava frustrada com as lives vazias, mas o Método Live Secreta mudou tudo!"</p>
-                <p class="depoimento-autor mt-2">- Cliente 3</p>
+                <p class="depoimento-text">"Estava frustrada com as lives vazias, mas o Método Live Secreta mudou tudo!"</p>
+                <p class="depoimento-autor">- Cliente 3</p>
             </div>
             <div class="depoimento-box">
-                <p class="text-lg">"Recomendo muito! Um verdadeiro divisor de águas para minhas vendas online."</p>
-                <p class="depoimento-autor mt-2">- Cliente 4</p>
+                <p class="depoimento-text">"Recomendo muito! Um verdadeiro divisor de águas para minhas vendas online."</p>
+                <p class="depoimento-autor">- Cliente 4</p>
             </div>
         </div>
 
-        <div class="mb-16 text-center"> 
-            <h3 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6"> 
+        <div class="mb-16 text-center">
+            <h3 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6">
                 Você se identifica com isso?
             </h3>
-            <ul class="list-none space-y-4 text-lg sm:text-xl text-gray-300 leading-relaxed mb-6"> 
+            <ul class="list-none space-y-4 text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✗</span> Lives sem audiência</li>
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✗</span> Nenhuma venda durante as transmissões</li>
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✗</span> Sentimento de frustração e desânimo</li>
             </ul>
         </div>
 
-        <div class="mb-16 text-center"> 
-            <h3 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6"> 
+        <div class="mb-16 text-center">
+            <h3 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6">
                 Apresentamos o Método Live Secreta:
             </h3>
-            <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8"> 
+            <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8">
                 Um sistema comprovado para você:
             </p>
-            <ul class="list-none space-y-5 text-lg sm:text-xl text-gray-300 leading-relaxed"> 
+            <ul class="list-none space-y-5 text-lg sm:text-xl text-gray-300 leading-relaxed">
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✓</span> Aumentar suas vendas com estratégias eficazes</li>
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✓</span> Engajar sua audiência antes, durante e após a live</li>
                 <li class="flex items-center justify-center"><span class="text-blue-400 text-2xl mr-2">✓</span> Criar um grupo VIP de compradores fiéis</li>
@@ -177,7 +196,7 @@
             </ul>
         </div>
 
-        <div class="mb-4 text-center pt-8 border-t border-blue-700 futuristic-glow"> {# Adicionado padding-top e borda para separar #}
+        <div class="mb-4 text-center pt-8 border-t border-blue-700 futuristic-glow">
             <h3 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6">
                 Não perca essa oportunidade única de transformar suas vendas!
             </h3>
@@ -214,6 +233,11 @@
             setTimeout(() => {
                 window.location.href = whatsappLink;
             }, 2000); // Redireciona após 2 segundos
+        });
+    </script>
+</body>
+</html>
+
         });
     </script>
 </body>
